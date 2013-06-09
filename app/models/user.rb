@@ -3,14 +3,16 @@ class User < ActiveRecord::Base
   has_many :user_skills
   has_many :skills, :through => :user_skills
 
-  def set_proficiency_for(skill_name, proficiency)
+  def set_proficiency_for(skill_object, proficiency)
+  	skill_name = skill_object.name
   	skill_id = Skill.find_by_name(skill_name).id
   	userskill_id = UserSkill.where(:user_id => self.id, :skill_id => 
   		skill_id)
   	UserSkill.update(userskill_id, :proficiency => proficiency)
   end
 
-  def proficiency_for(skill_name)
+  def proficiency_for(skill_object)
+  	skill_name = skill_object.name
   	skill_id = Skill.find_by_name(skill_name).id
   	UserSkill.where(:user_id => self.id, :skill_id => skill_id).first.proficiency
   end

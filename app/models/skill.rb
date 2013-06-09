@@ -5,6 +5,8 @@ class Skill < ActiveRecord::Base
   validates :name, :uniqueness => :true
 
   def user_with_proficiency(proficiency)
+  	user_id = UserSkill.find_by_proficiency(proficiency).user_id
+  	User.find(user_id)
   end
   
 end
