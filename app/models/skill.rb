@@ -10,3 +10,8 @@ class Skill < ActiveRecord::Base
   end
   
 end
+
+# attributes
+# t.string :name
+# t.string :context
+# t.timestamps

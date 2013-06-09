@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :user_skills
   has_many :skills, :through => :user_skills
 
+  validates :name , :email, :presence => :true
+  validates :email, :uniqueness => :true
+
   def set_proficiency_for(skill_object, proficiency)
   	skill_name = skill_object.name
   	skill_id = Skill.find_by_name(skill_name).id
@@ -18,3 +21,8 @@ class User < ActiveRecord::Base
   end
 
 end
+
+# attributes
+# t.string :name
+# t.string :email
+# t.timestamps

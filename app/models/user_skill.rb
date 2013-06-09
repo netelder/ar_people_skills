@@ -10,3 +10,9 @@ class UserSkill < ActiveRecord::Base
   end
   
 end
+
+# attributes	
+# t.integer :proficiency
+# t.references :user
+# t.references :skill
+# t.timestamps
